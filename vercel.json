@@ -1,0 +1,4 @@
+{
+  "buildCommand": "cd aegis-mongo && npm install && npm run build",
+  "outputDirectory": "aegis-mongo/dist"
+}
