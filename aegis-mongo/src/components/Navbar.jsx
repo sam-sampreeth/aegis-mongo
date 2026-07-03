@@ -1,24 +1,59 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-const Navbar = () => {
+const Navbar = ({ storageMode, setStorageMode }) => {
+  const [dropdownOpen, setDropdownOpen] = useState(false)
+
   return (
-    <nav className=' text-white text-lg'>
-      <div className="mycontainer flex justify-between items-center px-4 py-5 h-14 ">
-        <div className="logo font-bold">
-          Aegis
+    <nav className="navbar navbar-expand navbar-dark bg-dark border-bottom border-secondary-subtle py-2">
+      <div className="container-md">
+        <span className="navbar-brand mb-0 h1 text-white">Aegis</span>
+        <div className="d-flex align-items-center gap-3 ms-auto">
+          <div className="position-relative">
+            <button
+              className="btn btn-outline-light btn-sm dropdown-toggle"
+              type="button"
+              onClick={() => setDropdownOpen(!dropdownOpen)}
+            >
+              {storageMode === "local" ? "Local Storage" : "MongoDB (Local Server)"}
+            </button>
+            {dropdownOpen && (
+              <ul className="dropdown-menu dropdown-menu-end show" style={{ position: 'absolute', right: 0, top: '100%', zIndex: 1000 }}>
+                <li>
+                  <button
+                    className={`dropdown-item ${storageMode === "local" ? "active" : ""}`}
+                    onClick={() => {
+                      setStorageMode("local")
+                      setDropdownOpen(false)
+                    }}
+                  >
+                    Local Storage
+                  </button>
+                </li>
+                <li>
+                  <button
+                    className={`dropdown-item ${storageMode === "mongo" ? "active" : ""}`}
+                    onClick={() => {
+                      setStorageMode("mongo")
+                      setDropdownOpen(false)
+                    }}
+                  >
+                    MongoDB (Local Server)
+                  </button>
+                </li>
+              </ul>
+            )}
+          </div>
+
+          <a
+            href="https://github.com/sam-sampreeth/aegis"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-outline-secondary btn-sm d-flex align-items-center gap-2"
+          >
+            <img className="invert" src="/assets/github.png" alt="GitHub" width="16" height="16" />
+            <span>GitHub</span>
+          </a>
         </div>
-        {/* <ul>
-          <li className='flex gap-4'>
-              <a className='hover:font-bold' href="/">Home</a>
-              <a className='hover:font-bold' href="#">About</a>
-              <a className='hover:font-bold' href="#">Contact</a>
-          </li>
-        </ul> */}
-        <button className='text-base text-gray-400 my-4 rounded-full flex justify-between items-center bg-gray-800 border border-gray-600  hover:text-white' onClick={() => window.location.href = 'https://github.com/sam-sampreeth/aegis'}>
-          <img className='invert w-10 p-1' src="/assets/github.png" alt="GitHub" />
-          <span className='font-medium px-2'>GitHub</span>
-          
-        </button>
       </div>
     </nav>
   )

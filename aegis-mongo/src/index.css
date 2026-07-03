@@ -1,9 +1,56 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Custom styles for Aegis Password Manager */
 
-@layer components{
-    .mycontainer{
-        @apply container px-40 py-16 mx-auto;
-    }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+/* Ensure focus states use primary blue color */
+.form-control:focus {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.btn-primary {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+  font-weight: 500;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+  background-color: #0b5ed7;
+  border-color: #0a58ca;
+}
+
+/* Navbar adjustments */
+.navbar-brand {
+  font-weight: 700;
+}
+
+.navbar .btn {
+  font-weight: 500;
+}
+
+/* Icons */
+.invert {
+  filter: invert(1);
+}
+
+/* Hover effects */
+.table tr:hover {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* Headings */
+h2 {
+  font-weight: 600;
+}
+
+/* Labels and table headers */
+label, th {
+  font-weight: 500;
+  color: #b0b0b0;
 }
