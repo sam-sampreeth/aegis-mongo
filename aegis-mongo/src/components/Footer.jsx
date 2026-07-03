@@ -1,14 +1,13 @@
-import React from 'react';
+import React from 'react'
 
 const Footer = () => {
   return (
-    <div className='footer text-white flex justify-center items-center w-full'>
-      <span>
-         Made with &#10084; @ {/*<img className='w-8' src="/assets/heart.png" alt="heart" />{' '} */}
-      </span>
-      <span className='font-bold'>&nbsp; Aegis</span>:<span>&nbsp; We've got your back (and your passwords).</span>
-    </div>
-  );
+    <footer className="bg-dark border-top border-secondary-subtle py-3 text-center text-secondary mt-auto">
+      <div className="container">
+        <small className="text-secondary-50">Aegis &middot; 2026</small>
+      </div>
+    </footer>
+  )
 }
 
-export default Footer;
+export default Footer
