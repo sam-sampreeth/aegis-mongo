@@ -176,11 +176,15 @@ const Manager = ({ storageMode, setStorageMode }) => {
         <ToastContainer position="top-center" autoClose={3000} theme="dark" />
         <div className="container py-5" style={{ maxWidth: '600px' }}>
           <div className="card bg-dark border-secondary p-4 text-light">
-            <h2 className="text-danger mb-4">Local MongoDB Connection Failed</h2>
-            <p className="lead">The application could not reach the backend server at <strong>{BACKEND_URL}</strong>.</p>
-            <p className="mb-3">To run Aegis in MongoDB mode, you need to ensure both the MongoDB database service and the backend API server are active. Follow these steps:</p>
+            <h2 className="text-danger mb-4">Backend Connection Failed</h2>
+            <p className="lead">Could not reach the backend server at <strong>{BACKEND_URL}</strong>.</p>
+            <p className="mb-3">To use the MongoDB version, you need to run the backend locally. If you haven't yet, you can clone the repository to your system. If you are running the backend locally, make sure your database and API server are started:</p>
             
             <ol className="ps-3 text-secondary mb-4">
+              <li className="mb-4">
+                <strong>Clone the Repository (If accessing online):</strong>
+                <p className="text-light mb-1 mt-1">If you are using the hosted web app, clone the repository to your computer first so you can run the files locally.</p>
+              </li>
               <li className="mb-4">
                 <strong>Start MongoDB Database Engine (Not just Compass):</strong>
                 <p className="text-light mb-1 mt-1">MongoDB Compass is only a GUI viewer. The database service itself must be running on port <code>27017</code>.</p>
@@ -208,7 +212,7 @@ const Manager = ({ storageMode, setStorageMode }) => {
               <li className="mb-3">
                 <strong>Confirm Connection:</strong> Wait for the terminal output to confirm:
                 <div className="text-success font-monospace mt-1" style={{ fontSize: '0.9em' }}>
-                  Example app listening on port 3000<br/>
+                  Example app listening on port 3000 (or your assigned port)<br/>
                   Connected to MongoDB at mongodb://localhost:27017/
                 </div>
               </li>

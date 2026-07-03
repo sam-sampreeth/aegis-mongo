@@ -2,6 +2,8 @@
 
 A simple password manager built using React and Bootstrap.
 
+Live Demo: https://aegis-mongo-web.vercel.app/
+
 You can save passwords in two different ways:
 1. Local Storage (stores passwords in your browser, no server needed)
 2. MongoDB (stores passwords in a local database via a Node/Express backend)
