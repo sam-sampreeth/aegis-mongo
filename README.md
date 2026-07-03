@@ -1,45 +1,55 @@
-﻿# Aegis - The Password Manager
+# Aegis Password Manager
 
-Securely stores and manages login credentials, eliminating the need for remembering multiple passwords.
+A simple password manager built using React and Bootstrap.
 
-## Features
-* **Secure Storage:** Encrypts your passwords to protect them from unauthorized access.
-* **Easy Management:** Add, edit, and delete passwords conveniently.
-* Clean and Intuitive Design for easy navigation.
+You can save passwords in two different ways:
+1. Local Storage (stores passwords in your browser, no server needed)
+2. MongoDB (stores passwords in a local database via a Node/Express backend)
 
-Sneek peek of the UI
-![UI Image](https://i.imgur.com/hrsgkWL.png)
+Local Storage is used by default so the app works out of the box without any setup.
 
-## Dependencies
+## Running the App (Frontend)
 
-* [Toastify](https://www.npmjs.com/package/react-toastify) (For toast notifications)
-```javascript
-npm i react-toastify
-```
-* [uuidv4](https://www.npmjs.com/package/uuidv4) (for generating v4 UUIDs)
-```bash
-npm i uuidv4
-```
-* [MongoDB Compass](https://www.mongodb.com/products/tools/compass) (Database of the project)
-* And some other React hooks like useState, useRef, useEffect
+To run the React frontend:
 
-## Usage and Installation 
-1. Install npm.
-```bash
-npm install -g npm
-```
-2. Connect to the MongoDB database from the MongoDB Compass App. The default connection string is `mongodb://localhost:27017` you can change it to your own connection string by editing the `.env` file.
-3. Navigate to `aegis-mongo\backend` and start the server to handle fetch APIs.
-```bash
-node --watch server.js
-```
-4. From the root directory, start the project.
-```bash
-npm run dev
-```
-Bingo! The project is up and running. Add a few passwords and have a look at it appear in the MongoDB database!
-## Contributing
+1. Open your terminal and go to the folder:
+   ```bash
+   cd aegis-mongo
+   ```
 
-Pull requests are welcome. Please make sure to update tests as appropriate.
-## License
-This project is licensed under the [Creative Commons Zero v1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/deed.en) - see the LICENSE file for details.
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Run the development server:
+   ```bash
+   npm run dev
+   ```
+
+4. Open `http://localhost:5173` in your browser.
+
+## Running the MongoDB Backend
+
+If you want to use the MongoDB mode, you need to run the backend server first:
+
+1. Make sure you have MongoDB installed and running on your computer (default address is `mongodb://localhost:27017`).
+2. Open a terminal and go to the backend folder:
+   ```bash
+   cd aegis-mongo/backend
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+4. Start the server:
+   ```bash
+   npm start
+   ```
+   This runs the API on `http://localhost:3000`.
+
+## Using MongoDB Mode in the App
+
+1. Make sure the backend server is running on port 3000.
+2. In the top navbar of the web app, click the dropdown menu and select "MongoDB (Local Server)".
+3. If it can't connect to the backend, you'll see a help page telling you how to get it running.
