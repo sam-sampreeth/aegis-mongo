@@ -45,7 +45,7 @@ const Navbar = ({ storageMode, setStorageMode }) => {
           </div>
 
           <a
-            href="https://github.com/sam-sampreeth/aegis"
+            href="https://github.com/sam-sampreeth/aegis-mongo"
             target="_blank"
             rel="noopener noreferrer"
             className="btn btn-outline-secondary btn-sm d-flex align-items-center gap-2"
