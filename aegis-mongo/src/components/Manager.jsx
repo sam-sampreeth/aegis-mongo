@@ -3,6 +3,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import { v4 as uuidv4 } from 'uuid';
 import 'react-toastify/dist/ReactToastify.css';
 
+const BACKEND_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+
 const Manager = ({ storageMode, setStorageMode }) => {
   const [form, setForm] = useState({ site: "", username: "", password: "" });
   const [passwordArray, setPasswordArray] = useState([]);
@@ -30,7 +32,7 @@ const Manager = ({ storageMode, setStorageMode }) => {
       }
     } else if (storageMode === "mongo") {
       try {
-        const res = await fetch("http://localhost:3000/");
+        const res = await fetch(BACKEND_URL + "/");
         if (!res.ok) {
           throw new Error("HTTP error " + res.status);
         }
@@ -65,7 +67,7 @@ const Manager = ({ storageMode, setStorageMode }) => {
         setForm({ site: "", username: "", password: "" });
       } else if (storageMode === "mongo") {
         try {
-          const res = await fetch("http://localhost:3000/", {
+          const res = await fetch(BACKEND_URL + "/", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(newPassword)
@@ -95,7 +97,7 @@ const Manager = ({ storageMode, setStorageMode }) => {
       toast.success("Password deleted");
     } else if (storageMode === "mongo") {
       try {
-        const res = await fetch("http://localhost:3000/", {
+        const res = await fetch(BACKEND_URL + "/", {
           method: "DELETE",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ id })
@@ -129,14 +131,14 @@ const Manager = ({ storageMode, setStorageMode }) => {
       } else if (storageMode === "mongo") {
         try {
           // Delete old entry first as backend doesn't support PUT/PATCH
-          const deleteRes = await fetch("http://localhost:3000/", {
+          const deleteRes = await fetch(BACKEND_URL + "/", {
             method: "DELETE",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ id: editForm.id })
           });
           if (!deleteRes.ok) throw new Error("Delete failed");
 
-          const postRes = await fetch("http://localhost:3000/", {
+          const postRes = await fetch(BACKEND_URL + "/", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(editForm)
@@ -175,7 +177,7 @@ const Manager = ({ storageMode, setStorageMode }) => {
         <div className="container py-5" style={{ maxWidth: '600px' }}>
           <div className="card bg-dark border-secondary p-4 text-light">
             <h2 className="text-danger mb-4">Local MongoDB Connection Failed</h2>
-            <p className="lead">The application could not reach the backend server at <strong>http://localhost:3000</strong>.</p>
+            <p className="lead">The application could not reach the backend server at <strong>{BACKEND_URL}</strong>.</p>
             <p className="mb-3">To run Aegis in MongoDB mode, you need to ensure both the MongoDB database service and the backend API server are active. Follow these steps:</p>
             
             <ol className="ps-3 text-secondary mb-4">
